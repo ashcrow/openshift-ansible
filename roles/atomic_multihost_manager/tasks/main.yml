@@ -1,0 +1,25 @@
+---
+- name: Install Atomic Multi-Host Manager
+  command: "{{ ansible_pkg_mgr }} name=commissaire state=present"
+  when: not openshift.common.is_containerized | bool
+
+- name: Create commissaire service configuration
+  sudo: true
+  template: src=commissaire.j2 dest=/etc/sysconfig/commissaire owner=root mode=0600
+
+- name: Create default commissaire users.json
+  sudo: true
+  template: src=logger.json.j2 dest=/etc/commissaire/logger.json owner=root mode=0600
+
+- name: Create default commissaire logger.json
+  sudo: true
+  template: src=logger.json.j2 dest=/etc/commissaire/logger.json owner=root mode=0600
+
+- name: Configure Atomic Multi-Host Manager Kubernetes Token
+  command: "etcdctl set '/commissaire/config/kubetoken' {{ kubernetes_token }}"
+
+- name: Enable Atomic Multi-Host Manager
+  service:
+    name: commissaire
+    enabled: true
+    state: started

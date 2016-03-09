@@ -73,6 +73,7 @@
         - atomic-openshift-master
         - atomic-openshift-node
         - atomic-openshift-sdn-ovs
+        - commissaire
         - cockpit-bridge
         - cockpit-docker
         - cockpit-shell

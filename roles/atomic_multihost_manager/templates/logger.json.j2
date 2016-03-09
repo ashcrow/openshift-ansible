@@ -1,0 +1,62 @@
+{
+    "version": 1,
+    "formatters": {
+        "simple": {
+            "format": "%(asctime)s - %(name)s - %(process)d -  %(thread)d - %(levelname)s - %(message)s"
+        }
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "simple",
+            "level": "{{ comissiare_log_level|default("INFO") }}",
+            "stream": "ext://sys.stdout"
+        }
+    },
+    "loggers": {
+        "http-access": {
+            "handlers": ["console"],
+            "level": "{{ comissiare_log_level|default("INFO") }}",
+            "propagate": false
+        },
+        "http-error": {
+            "handlers": ["console"],
+            "level": "{{ comissiare_log_level|default("INFO") }}",
+            "propagate": false
+        },
+        "authentication": {
+            "handlers": ["console"],
+            "level": "{{ comissiare_log_level|default("INFO") }}",
+            "propagate": false
+        },
+        "clusterexec": {
+            "handlers": ["console"],
+            "level": "{{ comissiare_log_level|default("INFO") }}",
+            "propagate": false
+        },
+        "containermgr": {
+            "handlers": ["console"],
+            "level": "{{ comissiare_log_level|default("INFO") }}",
+            "propagate": false
+        },
+        "investigator": {
+            "handlers": ["console"],
+            "level": "{{ comissiare_log_level|default("INFO") }}",
+            "propagate": false
+        },
+        "resources": {
+            "handlers": ["console"],
+            "level": "{{ comissiare_log_level|default("INFO") }}",
+            "propagate": false
+        },
+        "transport": {
+            "handlers": ["console"],
+            "level": "{{ comissiare_log_level|default("INFO") }}",
+            "propagate": false
+        }
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "{{ comissiare_log_level|default("INFO") }}"
+    }
+}

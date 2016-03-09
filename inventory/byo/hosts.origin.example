@@ -106,6 +106,9 @@ openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 
 # Set cockpit plugins
 #osm_cockpit_plugins=['cockpit-kubernetes']
 
+# Enable Atomic Multi-Host Manager
+#osm_use_atomic_multihost_manager=true
+
 # Native high availability cluster method with optional load balancer.
 # If no lb group is defined, the installer assumes that a load balancer has
 # been preconfigured. For installation the value of

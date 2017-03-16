@@ -23,4 +23,8 @@ WORKDIR /var/lib/openshift-installer/
 
 RUN mkdir -p /var/lib/openshift-installer/
 
+# Add files for running as a system container
+COPY system-container/tmpfiles.template system-container/config.json.template  system-container/manifest.json system-container/service.template /exports/
+COPY system-container/run-system-container.sh /usr/local/bin/
+
 ENTRYPOINT ["/usr/bin/atomic-openshift-installer", "-c", "/var/lib/openshift-installer/installer.cfg", "--ansible-log-path", "/var/lib/openshift-installer/ansible.log"]

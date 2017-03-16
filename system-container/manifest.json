@@ -1,0 +1,10 @@
+{
+    "version": "1.0",
+    "defaultValues": {
+        "OPTS": "",
+        "VAR_LIB_OPENSHIFT_INSTALLER" : "/root",
+        "PLAYBOOK_FILE": "/usr/share/ansible/openshift-ansible/playbooks/byo/config.yml",
+        "SSH_ROOT": "/root/.ssh",
+        "INVENTORY_FILE": "/dev/null"
+    }
+}

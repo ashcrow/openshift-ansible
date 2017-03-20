@@ -42,3 +42,24 @@ tito tag
 ```
 tito build --rpm
 ```
+
+# openshift-ansible System Container Build instructions
+
+We use ``atomic`` and ``Docker`` to build the System Container
+
+For more information on the ``atomic`` command, please see the [Atomic App](http://www.projectatomic.io/docs/atomicapp/ "Atomic App Homepage").
+
+
+## Build the System Container
+- Change into openshift-ansible
+```
+cd openshift-ansible
+```
+- Build the initial Docker image
+```
+docker build -t oainstaller
+```
+- Import the image as a System Container
+```
+atomic pull --storage ostree docker:oainstaller
+```

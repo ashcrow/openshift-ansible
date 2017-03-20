@@ -13,3 +13,17 @@
   ```sh
   docker run -it --rm --privileged --net=host -v ~/.ssh:/root/.ssh -v /etc/ansible:/etc/ansible ansible
   ```
+
+
+# Running ansible as a System Container
+
+* Building the System Container: See the [BUILD.md](BUILD.md).
+* Create /etc/ansible directory on the host machine and copy inventory file (hosts) into it.
+* Copy ssh public key of the host machine to master and nodes machines in the cluster.
+* Running the ansible system container:
+
+  ```sh
+  atomic install --system --set INVENTORY_FILE=$(pwd)/inventory.origin openshift-ansible;
+  systemctl start openshift-ansible;
+  atomic uninstall openshift-ansible
+  ```
